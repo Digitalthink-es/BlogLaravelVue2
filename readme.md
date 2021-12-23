@@ -24,3 +24,5 @@
 ### Crear modelo para los posts y la migración
 	php artisan make:model Post -m
 	php artisan migrate
+	
+## 3. Mostrando los posts desde la base de datos
