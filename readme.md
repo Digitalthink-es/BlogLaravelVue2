@@ -15,3 +15,12 @@
 ### Crear archivo layout.blade.php
 	Contendrá los elementos reutilizables (cabecera, pie, etc.)
 	Se ubica en la carpeta resources/views
+
+## 2. Creando la tabla posts
+	Crear base de datos blogLaravelVue2 en mysql
+	![Creación base de datos](imagenesReadme/creacionBaseDatos.png) 
+### Crear las tablas ejecutando las migraciones
+	php artisan migrate
+### Crear modelo para los posts y la migración
+	php artisan make:model Post -m
+	php artisan migrate
