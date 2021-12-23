@@ -26,3 +26,11 @@
 	php artisan migrate
 	
 ## 3. Mostrando los posts desde la base de datos
+
+## 4. Mostrando la fecha de publicación de los posts
+	Los campos created_at y updated_at se tratan por defecto como una instancia de tipo Carbon
+	Para que una variable de tipo fecha creada manualmente sea tratada de tipo Carbon hay que especificarlo en el modelo
+	class Post extends Model
+	{
+	    protected $dates = ['published_at']; // Trata la fecha creada como instancia de tipo Carbon
+	}
