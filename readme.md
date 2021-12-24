@@ -38,3 +38,12 @@
 ## 5. Creando las categorías
 	php artisan make:model Category -m
 	php artisan migrate
+
+## 6. Qué son y cómo se utilizan los seeders
+	Creación de seeder para los posts php artisan make:seeder PostsTableSeeder
+	Creación de seeder para las categorías php artisan make:seeder CategoriesTableSeeder
+	Ejecutar el seeder
+		php artisan db:seed
+
+	Para ejecutar las migraciones y la ejecución de seeds en un único comando
+		php artisan migrate:refresh --seed
