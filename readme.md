@@ -34,3 +34,7 @@
 	{
 	    protected $dates = ['published_at']; // Trata la fecha creada como instancia de tipo Carbon
 	}
+
+## 5. Creando las categorías
+	php artisan make:model Category -m
+	php artisan migrate
