@@ -22,7 +22,7 @@
 ### Crear las tablas ejecutando las migraciones
 	php artisan migrate
 ### Crear modelo para los posts y la migración
-	php artisan make:model Post -m
+	php artisan make:model Post -m  # Con -m se crea la migración
 	php artisan migrate
 	
 ## 3. Mostrando los posts desde la base de datos
@@ -36,14 +36,40 @@
 	}
 
 ## 5. Creando las categorías
-	php artisan make:model Category -m
+	php artisan make:model Category -m  # Con -m se crea la migración
 	php artisan migrate
 
 ## 6. Qué son y cómo se utilizan los seeders
 	Creación de seeder para los posts php artisan make:seeder PostsTableSeeder
 	Creación de seeder para las categorías php artisan make:seeder CategoriesTableSeeder
+	Referenciar los seeders en el archivo DatabaseSeeder
+    public function run()
+    {
+         $this->call(PostsTableSeeder::class);
+         $this->call(CategoriesTableSeeder::class);
+    }	
+
 	Ejecutar el seeder
 		php artisan db:seed
 
 	Para ejecutar las migraciones y la ejecución de seeds en un único comando
 		php artisan migrate:refresh --seed
+
+## 7. Creando las etiquetas
+	Es una relación muchos a muchos (1 post puede tener muchas etiquetas y cada etiqueta puede estar referenciado por muchos posts)
+	php artisan make:model Tag -m # Con -m se crea la migración
+	php artisan migrate
+	Para crear la relación entre posts y etiquetas se crea una tabla intermedia que tenga los identifiadores relacionados
+		php artisan make:migration create_post_tag_table --create=post_tag # La convención establece el nombre de las tablas en singular y por orden alfabético (ordenación desde la a hasta la z). Con create se indica que se creará la tabla y se utiliza el caracter _ para separar los elementos. Con --create=post_tag indicamos el nombre de la tabla
+
+	En el archivo Post creamos funcion tags para recuperar las etiquetas de un post
+    // 1 post puede tener muchas etiquetas
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
+
+	En la vista se recorren todas las etiquetas de un post y se muestra el nombre
+	@foreach ($post->tags as $tag)
+		<span class="tag c-gray-1 text-capitalize">{{ $tag->name }}</span>
+	@endforeach
