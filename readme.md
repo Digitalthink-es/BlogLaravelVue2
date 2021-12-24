@@ -73,3 +73,23 @@
 	@foreach ($post->tags as $tag)
 		<span class="tag c-gray-1 text-capitalize">{{ $tag->name }}</span>
 	@endforeach
+
+## 8. Integrando la plantilla de administración LTE
+	https://github.com/ColorlibHQ/AdminLTE/releases/tag/v2.3.11
+
+	Crear carpeta adminlte dentro de public
+
+	Copiar carpeta css, img y js del directorio dist dentro de public
+
+	Copiar las carpetas bootstrap y plugins dentro de public
+
+	Copiar el contenido del archivo starter.html en un nuevo archivo resources/views/admin/layout.blade.php
+
+	Crear archivo resources/views/admin/dashboard.blade.php
+
+	Modificar contenido de web.php, para incluir ruta a la página del dashboard
+		Route::get('/admin', function () {
+			return view('admin.dashboard');
+		});
+
+		Para acceder a esta página http://localhost:8000/admin
