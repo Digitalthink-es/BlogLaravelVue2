@@ -93,3 +93,63 @@
 		});
 
 		Para acceder a esta página http://localhost:8000/admin
+
+## 9. Integrando el login - Parte I
+
+	Para revisar las opciones de cada comando de php artisan podemos ejecutar 
+
+		php artisan -h make:auth
+
+	Ejecutamos php artisan make:auth --views para que cree solo las vistas
+
+		Este comando crea la carpeta resources\views\auth
+
+	En el archivo web.php añadimos
+
+		Route::auth(); que es un método especial para login, registro y recuperación de contraseñas
+
+	Al acceder a la ruta http://localhost:8000/login tenemos acceso al formulario de login de usuario
+
+	Al acceder a la ruta http://localhost:8000/register tenemos acceso al formulario de registro de nuevo usuario
+
+	El el archivo web.php copiar todas las rutas del método auth() de la clase Router.php, reemplazando $this-> por Route::, y comentar las 2 rutas de registro
+
+	    // Authentication Routes...
+        $this->get('login', 'Auth\LoginController@showLoginForm')->name('login');
+        $this->post('login', 'Auth\LoginController@login');
+        $this->post('logout', 'Auth\LoginController@logout')->name('logout');
+
+        // Registration Routes...
+        $this->get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+        $this->post('register', 'Auth\RegisterController@register');
+
+        // Password Reset Routes...
+        $this->get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+        $this->post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+        $this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+        $this->post('password/reset', 'Auth\ResetPasswordController@reset');
+
+		El resultado final será
+
+		// Authentication Routes...
+		Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+		Route::post('login', 'Auth\LoginController@login');
+		Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+
+		// Registration Routes...
+		//Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+		//Route::post('register', 'Auth\RegisterController@register');
+
+		// Password Reset Routes...
+		Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+		Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+		Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+		Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+
+	Comentar la línea del archivo register del archivo app.blade.php
+
+		<li><a href="{{ route('register') }}">Register</a></li>
+
+	Como este archivo no va a utilizarse borrar carpeta resources\views\layouts
+
+	En el archivo login.blade.php extender de la plantilla admin.layout @extends('admin.layout') 
