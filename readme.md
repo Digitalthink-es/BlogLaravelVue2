@@ -152,4 +152,43 @@
 
 	Como este archivo no va a utilizarse borrar carpeta resources\views\layouts
 
-	En el archivo login.blade.php extender de la plantilla admin.layout @extends('admin.layout') 
+		En el archivo login.blade.php extender de la plantilla admin.layout @extends('admin.layout')
+
+	Utilizar archivo login.html de la carpeta pages\examples del framework adminlte 2.3.11
+
+## 10. Integrando el login - Parte II
+
+	Cambiar variable locale en app.php para que sea en español
+
+		'locale' => 'en', se sustituye por
+		'locale' => 'es',
+
+	Para que los mensajes aparezcan en español hay que tener la carpeta
+
+		resources\lang\es
+		
+		En la ruta del paquete Laravel Lang https://github.com/Laravel-Lang/lang/tree/master/locales/es y copiar el contenido en la carpeta lang\es creada
+
+	Cambiar variable con el nombre de la aplicación en archivo .env
+		
+		APP_NAME='Blog de Dani'
+
+	Crear usuario en base de datos para poder iniciar sesión
+
+		php artisan tinker
+
+		$user = new App\User;
+		$user->name = "Daniel Martínez Piñero"
+		$user->email = "dmpinero@gmail.com"
+		$user->password = bcrypt("123456")
+		$user->save()
+
+	En el archivo dashboard.blade.php podemos acceder a los datos del usuario autenticado
+
+		<p>Usuario autenticado: {{ auth()->user()->name }}</p>
+
+	Para que la ruta /home quede protegida y que solo puedan acceder los usuarios autenticados podemos poner un middleware en el archvio web.php. Si el usuario no está autenticado se redirige automáticamente a la página de login
+
+		Route::get('/home', function () {
+			return view('admin.dashboard');
+		})->middleware('auth');
