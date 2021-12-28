@@ -192,3 +192,29 @@
 		Route::get('/home', function () {
 			return view('admin.dashboard');
 		})->middleware('auth');
+
+## 11. Personalizando el menú y utilizando controladores
+
+	Crear archivo resources\views\admin\partials\nav.blade.php
+
+	En la url http://fontawesome.com/icons están disponibles todos los iconos
+
+	Crear archivo resources\views\admin\posts\index.blade.php # En la carpeta posts estarán las vistas relacionadas con los posts
+
+	Crear archivo HomeController
+	
+		php artisan make:controller HomeController
+
+	Crear archivo PagesController
+
+		php artisan make:controller PagesController
+
+	Crear archivo PostsController
+
+		php artisan make:controller Admin/PostsController
+
+	Modificar archivo web.php para apuntar al método index
+
+		Route::get('admin/posts','Admin\PostsController@index');
+
+	La ruta de administración de los posts es http://localhost:8000/admin/posts

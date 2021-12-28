@@ -11,15 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    $posts = App\Post::latest('published_at')->get();
+Route::get('/', 'PagesController@home');
 
-    return view('welcome', compact('posts'));
-});
 
-Route::get('/home', function () {
-    return view('admin.dashboard');
-})->middleware('auth');
+Route::get('/home','HomeController@index');
 
 // Authentication Routes...
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -35,3 +30,10 @@ Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm'
 Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+
+// Rutas de administración
+Route::group(['prefix' => 'admin', 
+              'namespace' => 'Admin', 
+              'middleware' => 'auth'], function() {
+    Route::get('posts','Admin\PostsController@index');
+});
