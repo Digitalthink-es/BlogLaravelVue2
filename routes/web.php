@@ -35,5 +35,5 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 Route::group(['prefix' => 'admin', 
               'namespace' => 'Admin', 
               'middleware' => 'auth'], function() {
-    Route::get('posts','Admin\PostsController@index');
+    Route::get('posts','PostsController@index')->name('admin.posts.index');
 });

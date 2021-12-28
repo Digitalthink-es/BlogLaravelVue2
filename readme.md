@@ -218,3 +218,29 @@
 		Route::get('admin/posts','Admin\PostsController@index');
 
 	La ruta de administración de los posts es http://localhost:8000/admin/posts
+
+## 11. Mostrando los posts con DatatablesJs
+
+	Copiar ruta de los css del archivo pages\tables\data.html en la página layout.blade.php
+		
+		link rel="stylesheet" href="/adminlte/plugins/datatables/dataTables.bootstrap.css">
+
+	Copiar ruta de los archivos javascript del archivo pages\tables\data.html en la página layout.blade.php
+
+		<script src="/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
+		<script src="/adminlte/plugins/datatables/dataTables.bootstrap.min.js"></script>
+
+	Copiar el siguiente script del archivo pages\tables\data.html en la página layout.blade.php
+
+		<script>
+		$(function () {
+			$('#posts-table').DataTable({
+			"paging": true,
+			"lengthChange": false,
+			"searching": false,
+			"ordering": true,
+			"info": true,
+			"autoWidth": false
+			});
+		});
+		</script>	
