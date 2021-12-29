@@ -262,3 +262,15 @@
         return view('admin.posts.create');
     }
 
+## 15. Implementación de un selector de fechas "datepicker"
+
+	Con la directiva @stack podemos hacer inclusión de contenido (como yield, pero sin sobreescribir el contenido)
+	@stack('styles')
+	@stack('scripts')
+
+	Para utilizarlo, en lugar de @section utilizamos @push
+	@push('styles')
+	@endpush
+
+	@push('scripts')
+	@endpush

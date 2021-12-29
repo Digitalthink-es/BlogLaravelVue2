@@ -9,7 +9,7 @@
     <li><a href="#"><i class="fa fa-dashboard"></i> Inicio</a></li>
     <li class="active">Blog</li>
 </ol>
-@stop
+@endsection
 
 @section('content')
 
@@ -25,6 +25,7 @@
               <th>ID</th>
               <th>Título</th>
               <th>Extracto</th>
+              <th>Acciones</th>
             </tr>
             </thead>
             <tbody>
@@ -48,4 +49,28 @@
         <!-- /.box-body -->
       </div>
       <!-- /.box -->    
-@stop
+@endsection
+
+@push('styles')
+  <!-- DataTables -->
+  <link rel="stylesheet" href="/adminlte/plugins/datatables/dataTables.bootstrap.css">
+@endpush
+
+@push('scripts')
+  <!-- DataTables -->
+  <script src="/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
+  <script src="/adminlte/plugins/datatables/dataTables.bootstrap.min.js"></script>
+
+  <script>
+    $(function () {
+      $('#posts-table').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false
+      });
+    });
+    </script>  
+@endpush

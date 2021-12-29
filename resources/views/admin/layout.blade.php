@@ -24,8 +24,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   -->
   <link rel="stylesheet" href="/adminlte/css/skins/skin-blue.min.css">
 
-  <!-- DataTables -->
-  <link rel="stylesheet" href="/adminlte/plugins/datatables/dataTables.bootstrap.css">
+  @stack('styles')
+
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -379,24 +379,11 @@ desired effect
 <script src="/adminlte/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="/adminlte/bootstrap/js/bootstrap.min.js"></script>
-<!-- DataTables -->
-<script src="/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="/adminlte/plugins/datatables/dataTables.bootstrap.min.js"></script>
+
+@stack('scripts')
+
 <!-- AdminLTE App -->
 <script src="/adminlte/js/app.min.js"></script>
-
-<script>
-  $(function () {
-    $('#posts-table').DataTable({
-    "paging": true,
-    "lengthChange": false,
-    "searching": false,
-    "ordering": true,
-    "info": true,
-    "autoWidth": false
-    });
-  });
-  </script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
