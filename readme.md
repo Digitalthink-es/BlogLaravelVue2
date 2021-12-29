@@ -219,7 +219,7 @@
 
 	La ruta de administración de los posts es http://localhost:8000/admin/posts
 
-## 11. Mostrando los posts con DatatablesJs
+## 12. Mostrando los posts con DatatablesJs
 
 	Copiar ruta de los css del archivo pages\tables\data.html en la página layout.blade.php
 		
@@ -243,4 +243,10 @@
 			"autoWidth": false
 			});
 		});
-		</script>	
+		</script>
+
+## 13. Reestructuración de código y activación de links
+
+	Todos los middleware tienen un método handle que se ejecuta automáticamente
+
+	Los middleware se registran en el archivo kernel.php
