@@ -250,3 +250,15 @@
 	Todos los middleware tienen un método handle que se ejecuta automáticamente
 
 	Los middleware se registran en el archivo kernel.php
+
+	Cambiar nombre HomeController por AdminController
+
+## 14. Creación del formulario para ingresar posts
+
+	Creación de función create en PostsController.php
+
+	public function create()
+    {
+        return view('admin.posts.create');
+    }
+
