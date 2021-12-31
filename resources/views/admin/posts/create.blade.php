@@ -30,7 +30,7 @@
 
                             <div class="form-group">
                                 <label for="contenidPublicacion">Contenido de la publicación</label>
-                                <textarea name="body" rows="10" class="form-control" placeholder="Ingresa aquí el contenido completo de la publicación">
+                                <textarea name="body" id="editor" rows="10" class="form-control" placeholder="Ingresa aquí el contenido completo de la publicación">
                                 </textarea>
                             </div>                        
                         </div>
@@ -64,6 +64,15 @@
                         </div>
 
                         <div class="form-group">
+                            <label>Etiquetas</label>
+                            <select class="form-control select2" multiple="multiple" data-placeholder="Selecciona una etiqueta" style="width: 100%;">
+                                @foreach ($tags as $tag)
+                                    <option value="{{ $tag->id }}">{{ $tag->name }}</option>    
+                                @endforeach
+                            </select>                           
+                        </div>
+
+                        <div class="form-group">
                             <label for="extractoPublicacion">Resumen de la publicación</label>
                             <textarea name="excerpt" rows="6" class="form-control" placeholder="Ingresa aquí el resumen de la publicación">
                             </textarea>
@@ -84,16 +93,28 @@
 @push('styles')
     <!-- bootstrap datepicker -->
     <link rel="stylesheet" href="/adminlte/plugins/datepicker/datepicker3.css">
+    <!-- Select2 -->
+  	<link rel="stylesheet" href="/adminlte/plugins/select2/select2.min.css">
 @endpush
 
 @push('scripts')
     <!-- bootstrap datepicker -->
     <script src="/adminlte/plugins/datepicker/bootstrap-datepicker.js"></script>
-
+    <!-- CK Editor -->
+    <script src="https://cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+    <!-- Select2 -->
+    <script src="/adminlte/plugins/select2/select2.full.min.js"></script>
+    
     <script>
         //Date picker
         $('#datepicker').datepicker({
             autoclose: true
         });
+
+        //CKeditor
+        CKEDITOR.replace('editor');
+        
+        //Select2
+        $(".select2").select2();
     </script>
 @endpush

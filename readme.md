@@ -274,3 +274,24 @@
 
 	@push('scripts')
 	@endpush
+
+## 16. Integrando un editor de contenido y un selector múltiple
+
+	Incluir CKEditor en el archivo create.blade.php
+
+	<!-- CK Editor -->
+    <script src="https://cdn.ckeditor.com/4.5.7/standard/ckeditor.js"></script>
+
+	CKEDITOR.replace('editor');
+
+	<textarea name="body" id="editor" -- El id del textarea debe ser el mismo de la línea CKEDITOR.replace('editor');
+
+	Incluir select múltiple para las etiquetas
+
+	<!-- Select2 -->
+    <script src="/adminlte/plugins/select2/select2.full.min.js"></script>
+
+	$(".select2").select2();
+
+	<!-- Select2 -->
+  	<link rel="stylesheet" href="/adminlte/plugins/select2/select2.min.css">
