@@ -335,4 +335,26 @@ v
 
 ## 18. Validando el formulario
 
-	
+
+	<input name="title" 
+		type="text" 
+		class="form-control"
+		value=" {{ old('title') }}"
+		placeholder="Ingresa aquí el título de la publicación">
+
+## 19. Query scopes
+
+	Con las query scopes podemos reutilizar consultas comunes en la aplicación
+
+	Para crear un query scope se pone con scopeNombreFuncion, por ejemplo en Post.php
+
+    public function scopePublished($query)
+    {
+        $query->whereNotNull('published_at') // No mostrar publicaciones sin fecha de publicación
+                    ->where('published_at', '<=', Carbon::now()) // No mostrar publicaciones con fecha de publicación posterior al día de hoy
+                    ->latest('published_at');
+    }
+
+	En el modelo Post obtenemos los resultados, llamando al query scope sin la palabra "scope"
+	$posts = Post::published()->get();
+
