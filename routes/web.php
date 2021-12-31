@@ -36,4 +36,5 @@ Route::group(['prefix' => 'admin',
                 Route::get('/','AdminController@index')->name('admin.index');
                 Route::get('posts','PostsController@index')->name('admin.posts.index');
                 Route::get('posts/create','PostsController@create')->name('admin.posts.create');
+                Route::post('posts/store','PostsController@store')->name('admin.posts.store');
 });

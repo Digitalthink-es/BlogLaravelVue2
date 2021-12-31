@@ -295,3 +295,40 @@
 
 	<!-- Select2 -->
   	<link rel="stylesheet" href="/adminlte/plugins/select2/select2.min.css">
+
+## 17. Guardando las publicaciones
+
+	Post.php
+
+		protected $guarded = [];
+
+	Layout.blade.php
+
+		@if (session()->has('flash'))
+			<div class="alert alert-success">
+			{{ session('flash') }}
+			</div>
+		@endif	
+
+	PostsController.php
+
+		public function store(Request $request)
+		{
+			// Validación
+			//dd($request->all());
+
+			// Almacenamiento
+			$post = new Post();
+			$post->title = $request->title;
+			$post->body = $request->body;
+			$post->excerpt = $request->excerpt;
+			$post->published_at = Carbon::parse($request->published_at);
+			$post->category_id =  $request->category;
+
+			$post->save();
+
+			// Etiquetas
+			$post->tags()->attach($request->tags);
+			
+			return back()->with('flash', 'Tu publicación ha sido creada');
+		}	
