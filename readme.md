@@ -296,7 +296,7 @@
 	<!-- Select2 -->
   	<link rel="stylesheet" href="/adminlte/plugins/select2/select2.min.css">
 
-## 17. Guardando las publicaciones
+v
 
 	Post.php
 
@@ -331,4 +331,8 @@
 			$post->tags()->attach($request->tags);
 			
 			return back()->with('flash', 'Tu publicación ha sido creada');
-		}	
+		}
+
+## 18. Validando el formulario
+
+	
