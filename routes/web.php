@@ -11,8 +11,11 @@
 |
 */
 
+// Página inicial
 Route::get('/', 'PagesController@home');
 
+// Visualización de elementos
+Route::get('blog/{id}', 'PostsController@show');
 
 // Authentication Routes...
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');

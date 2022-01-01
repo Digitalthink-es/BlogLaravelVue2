@@ -358,3 +358,12 @@ v
 	En el modelo Post obtenemos los resultados, llamando al query scope sin la palabra "scope"
 	$posts = Post::published()->get();
 
+## 20. Mostrando los posts individuales
+
+	Crear controlador PostsController (ya hay uno definido en el namespace Admin, este es otro)
+
+		php artisan make:controller PostsController
+
+	Crear vista resources\views\posts\show.blade.php
+
+	Crear vista resources\views\partials\disqus-script.blade.php
