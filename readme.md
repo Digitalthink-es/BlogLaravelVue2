@@ -418,3 +418,12 @@ v
 	Modificar archivo PostsController de amin para incluir la url
 
 		$post->url = str_slug($request->title);
+
+## 22. Título y descripción para SEO
+
+	Cada página tendrá su propio título. En la página layout.blade.php poner
+
+		El título por defecto será el que esté configurado en la propiedad app.name del archivo .env, en caso de que no esté definida la propiedad meta-title, que es la que prevalece.
+	
+		<title>@yield('meta-title', config('app.name') . " | Blog")</title>
+		<meta name="description" content="@yield('meta-description', 'Este es el blog de Zendero')">
