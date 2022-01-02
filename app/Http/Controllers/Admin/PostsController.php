@@ -42,6 +42,7 @@ class PostsController extends Controller
         // Almacenamiento
         $post = new Post();
         $post->title = $request->title;
+        $post->url = str_slug($request->title);
         $post->body = $request->body;
         $post->excerpt = $request->excerpt;
         $post->published_at = is_null($request->published_at) ? null : Carbon::parse($request->published_at);

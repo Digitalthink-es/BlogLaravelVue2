@@ -7,10 +7,8 @@ use App\Post;
 
 class PostsController extends Controller
 {
-    public function show($id)
+    public function show(Post $post)
     {
-        $post = Post::find($id);
-
         return view('posts.show', compact('post'));
     }
 }

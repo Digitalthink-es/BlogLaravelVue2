@@ -17,6 +17,7 @@ class PostsTableSeeder extends Seeder
 
         $post = new Post();
         $post->title = "Mi primer post";
+        $post->url = str_slug($post->title);
         $post->excerpt = "Extracto de mi primer post";
         $post->body = "<p>Contenido de mi primer post<p>";
         $post->published_at = Carbon::now()->subDays(4); // El post fue realizado hace 4 días
@@ -26,6 +27,7 @@ class PostsTableSeeder extends Seeder
 
         $post = new Post();
         $post->title = "Mi segundo post";
+        $post->url = str_slug($post->title);
         $post->excerpt = "Extracto de mi segundo post";
         $post->body = "<p>Contenido de mi segundo post<p>";
         $post->published_at = Carbon::now()->subDays(3); // El post fue realizado hace 3 días;
@@ -35,6 +37,7 @@ class PostsTableSeeder extends Seeder
 
         $post = new Post();
         $post->title = "Mi tercer post";
+        $post->url = str_slug($post->title);
         $post->excerpt = "Extracto de mi tercer post";
         $post->body = "<p>Contenido de mi tercer post<p>";
         $post->published_at = Carbon::now()->subDays(2); // El post fue realizado hace 2 días;
@@ -44,6 +47,7 @@ class PostsTableSeeder extends Seeder
 
         $post = new Post();
         $post->title = "Mi cuarto post";
+        $post->url = str_slug($post->title);
         $post->excerpt = "Extracto de mi cuarto post";
         $post->body = "<p>Contenido de mi cuarto post<p>";
         $post->published_at = Carbon::now()->subDays(1); // El post fue realizado hace 1 día;
@@ -53,6 +57,7 @@ class PostsTableSeeder extends Seeder
 
         $post = new Post();
         $post->title = "Mi quinto post";
+        $post->url = str_slug($post->title);
         $post->excerpt = "Extracto de mi quinto post";
         $post->body = "<p>Contenido de mi quinto post<p>";
         $post->published_at = Carbon::now();

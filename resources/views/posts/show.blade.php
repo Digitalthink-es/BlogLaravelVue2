@@ -11,7 +11,7 @@
           <span class="category">{{ $post->category->name }}</span>
         </div>
       </header>
-      <h1>{{ $post->title }}</h1>
+      <h1>{{ str_slug($post->title) }}</h1>
         <div class="divider"></div>
         <div class="image-w-text">
 					

@@ -15,7 +15,7 @@
 Route::get('/', 'PagesController@home');
 
 // Visualización de elementos
-Route::get('blog/{id}', 'PostsController@show');
+Route::get('blog/{post}', 'PostsController@show');
 
 // Authentication Routes...
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');

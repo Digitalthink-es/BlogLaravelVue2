@@ -367,3 +367,54 @@ v
 	Crear vista resources\views\posts\show.blade.php
 
 	Crear vista resources\views\partials\disqus-script.blade.php
+
+## 21. Mostrando URLs amigables
+
+	Copiar carpeta flat_web_icon_set desde github de Aprendible (https://github.com/aprendible/curso-blog/public/img) en carpeta public/img
+
+	En el archivo PostController.blade.php obtener el post sin tener que pasar el id
+
+		public function show(Post $post)
+		{
+			return view('posts.show', compact('post'));
+		}
+	
+	En el archivo web.php
+
+		Route::get('blog/{post}', 'PostsController@show');
+
+	El el archivo Post.php para poder referenciar a los posts por nombre y no por id redefinimos el métiodo getRouteKeyName()
+
+	Para poder acceder a una url amigable utilizamos en show.blade.php la función 
+
+		str_slug($post->title) # Esta función sustituye las mayúsculas por minúsculas y los espacios en blanco por un guión
+
+	Crear en la migración de la tabla post un campo para almacenar la url
+
+		$table->string('url');
+
+	En el seeder PostTableSeeder incluir el campo url
+
+		$post->url = str_slug($post->title);
+
+	Ejecutar migración
+
+		php artisan migrate:refresh --seed
+
+	En el archivo welcome.blade.php cambiar
+
+		$post->id por $post->url
+
+	Por último hay que indicar que la búsqueda sea por el campo url
+
+	    public function getRouteKeyName()
+		{
+			return 'url';
+		}
+
+	Crear archivo UsersTableSeeder.php para incluir un nuevo usuario cuando se borre la base de datos
+	Crear archivo TagsTableSeeder.php para incluir 2 nuevas etiquetas cuando se borre la base de datos
+
+	Modificar archivo PostsController de amin para incluir la url
+
+		$post->url = str_slug($request->title);

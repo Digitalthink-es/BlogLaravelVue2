@@ -11,6 +11,12 @@ class Post extends Model
 
     protected $dates = ['published_at']; // Trata la fecha creada como instancia de tipo Carbon
 
+    // Devolver el post por el campo por el que queremos que se devuelva
+    public function getRouteKeyName()
+    {
+        return 'url';
+    }
+
     // 1 Post pertenece a una categoría
     public function category()
     {
