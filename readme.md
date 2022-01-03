@@ -427,3 +427,12 @@ v
 	
 		<title>@yield('meta-title', config('app.name') . " | Blog")</title>
 		<meta name="description" content="@yield('meta-description', 'Este es el blog de Zendero')">
+
+## 23. Social Links
+
+	Modificación de estilos de iconos de redes sociales en style.css
+	Modificación de textos de iconos de redes sociales en show.blade.php
+
+	En la URL github.com/bradvin/social-share-urls tenemos proyecto github para integrar las redes sociales en los distintos lenguajes de programación
+
+	Creación de archivo partials.social-links.blade.php
