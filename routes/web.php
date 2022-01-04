@@ -14,7 +14,7 @@
 // Página inicial
 Route::get('/', 'PagesController@home');
 
-// Visualización de elementos
+// Visualización de publicaciones
 Route::get('blog/{post}', 'PostsController@show');
 
 // Authentication Routes...
@@ -40,4 +40,5 @@ Route::group(['prefix' => 'admin',
                 Route::get('posts','PostsController@index')->name('admin.posts.index');
                 Route::get('posts/create','PostsController@create')->name('admin.posts.create');
                 Route::post('posts/store','PostsController@store')->name('admin.posts.store');
+                Route::get('posts/{post}', 'PostsController@edit')->name('admin.posts.edit');;
 });

@@ -436,3 +436,44 @@ v
 	En la URL github.com/bradvin/social-share-urls tenemos proyecto github para integrar las redes sociales en los distintos lenguajes de programación
 
 	Creación de archivo partials.social-links.blade.php
+
+## 24. Actualizar posts. Parte 1
+
+	Al crear un post se lanzará una modal
+
+	https://getbootstrap.com/docs/3.4/javascript/
+
+	En el archivo index.blade.php incluir
+
+		<button class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal">
+			<i class="fa fa-plus"></i>
+			Crear publicación
+		</button>
+
+	Copiar código de la ventana modal
+
+		<!-- Modal -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+				</div>
+				<div class="modal-body">
+				...
+				</div>
+				<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary">Save changes</button>
+				</div>
+			</div>
+			</div>
+		</div>
+
+	Crear vista de edición en web.php
+
+		// Edición de publicaciones
+		Route::get('posts/{post}', 'PostsController@edit');
+
+

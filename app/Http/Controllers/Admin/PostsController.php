@@ -26,6 +26,7 @@ class PostsController extends Controller
         return view('admin.posts.create', compact('categories', 'tags'));
     }
 
+    /*
     public function store(Request $request)
     {
         //dd($request->published_at);
@@ -54,5 +55,25 @@ class PostsController extends Controller
         $post->tags()->attach($request->tags);
         
         return back()->with('flash', 'Tu publicación ha sido creada');
+    }
+    */
+
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'title' => 'required',
+        ]);
+
+        // Almacenamiento
+        $post = Post::create(['title' => $request->title, 
+                              'url' => str_slug($request->title) 
+                            ]);
+
+        return redirect()->route('admin.posts.edit', $post);
+    }
+
+    public function edit(Post $post)
+    {
+        return view('admin.posts.edit', compact('post'));
     }
 }
