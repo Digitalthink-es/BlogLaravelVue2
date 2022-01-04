@@ -476,4 +476,9 @@ v
 		// Edición de publicaciones
 		Route::get('posts/{post}', 'PostsController@edit');
 
+## 25. Actualizar posts. Parte 2
+
+	
+
+
 
