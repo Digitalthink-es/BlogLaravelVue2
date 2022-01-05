@@ -9,6 +9,10 @@ class PhotosController extends Controller
 {
     public function store(Post $post)
     {
-        return 'Procesando imagen';
+    	$this->validate(request(), [
+    		'photo' => 'required|image|max:4096'
+		]);
+
+        $photo = request()->file('photo'); // el campo photo es el definido como paramName en la inicialización del objeto Dropzone
     }
 }

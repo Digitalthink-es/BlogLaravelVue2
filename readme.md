@@ -495,4 +495,6 @@ v
 
 		php artisan make:model Photo -mc # Incluir la migración y el controlador
 
+## 27. Validando las imágenes
 
+	
