@@ -116,6 +116,12 @@
                                 placeholder="Ingresa aquí el resumen de la publicación"
                             >{{ old('excerpt', $post->excerpt ) }}</textarea>
                         </div>
+
+                        <div class="form-group">
+                            <div class="dropzone">
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -134,9 +140,14 @@
     <link rel="stylesheet" href="/adminlte/plugins/datepicker/datepicker3.css">
     <!-- Select2 -->
   	<link rel="stylesheet" href="/adminlte/plugins/select2/select2.min.css">
+    <!-- DropzoneJS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.0.1/dropzone.css">
 @endpush
 
 @push('scripts')
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.0.1/min/dropzone.min.js"></script>
+
     <!-- bootstrap datepicker -->
     <script src="/adminlte/plugins/datepicker/bootstrap-datepicker.js"></script>
     <!-- CK Editor -->
@@ -157,5 +168,17 @@
         
         //Select2
         $(".select2").select2();
+
+        //DropzoneJS
+        new Dropzone('.dropzone', {
+            url: '/admin/posts/{{ $post->url }}/photos',
+            dictDefaultMessage: 'Arrastre las imágenes aquí',
+            headers: {
+            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },            
+        });
+
+        Dropzone.autoDiscover = false;
     </script>
+
 @endpush

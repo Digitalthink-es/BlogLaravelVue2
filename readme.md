@@ -478,7 +478,21 @@ v
 
 ## 25. Actualizar posts. Parte 2
 
-	
+## 26. Cómo actualizar imágenes con DropzoneJS
 
+	Incluir como cdn (buscar dropzonejs en http://cdnjs.com)
+
+	https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.0.1/min/dropzone.min.js
+
+	Incluir en edit.blade.php
+
+		<script>https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.0.1/min/dropzone.min.js></script>
+
+		<!-- DropzoneJS -->
+    	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.0.1/dropzone.css">
+
+	Se va a permitir subir más de una imagen a un post, por lo que se creará una tabla independiente
+
+		php artisan make:model Photo -mc # Incluir la migración y el controlador
 
 

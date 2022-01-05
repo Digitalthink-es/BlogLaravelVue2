@@ -14,8 +14,9 @@
               <div class="form-group {{ count($errors) > 0 ? 'has-error' : '' }}">
                 <!--<label for="tituloPublicacion">Título de la publicación</label>-->
                 <input name="title" 
-                      type="text" 
+                      type="text"
                       class="form-control"
+                      required
                       value=" {{ old('title') }}"
                       placeholder="Ingresa aquí el título de la publicación">
               </div>            
